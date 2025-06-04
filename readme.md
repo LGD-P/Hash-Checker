@@ -45,5 +45,8 @@ You want more ? -> [HashCat]('https://hashcat.net/wiki/doku.php?id=example_hashe
 
 ## Illustration : 
 
+<p align="center">
+    <img src="img/hash-from-file.gif" width="900">
+</p>
 
 
