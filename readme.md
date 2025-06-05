@@ -38,17 +38,60 @@ Is a simple CLI tool that allows to :
 
 *- it handle 16 algorithm that are commonly used for this task*
 
-## Report and History : 
-
-- In the current directory where you execute this tool, you will have a `.file_path_history` that help 
-auto-compplete of dir path to be more precise
-
-- After getting the report in console, a `report_{hash_numer}.html` is also available in the current dir  
-
-
 <p align="center">
     <img src="img/supported-hashes.png" width="900">
 </p>
+
+
+## Report and History : 
+
+- You will need to create an account on [VIRUS_TOTAL](https://www.virustotal.com/gui/sign-in) to get a free API Key, 
+and be able to use `Scan a Hash with Virus-Total` feature 
+
+- In the current directory where you execute this tool, you will have a `.file_path_history` that help 
+auto-compplete of dir path to be more accurate
+
+- After getting the report in console, a `report_{hash_numer}.html` is also available in the current dir  
+
+----------
+
+
+## Installation : 
+
+
+- This project runs on Python 3.12.3
+
+
+- Clone the project:
+```bash
+    git clone https://github.com/LGD-P/Hash-Checker.git
+```
+
+- Go in current dir : 
+```bash
+    cd Hash-Checker
+```
+
+- If not already installed:
+```bash
+    pip3 install poetry
+```
+- Activate the environment:
+```bash
+    poetry shell
+```
+
+- Install dependencies:
+```bash
+    poetry install
+```
+
+- Env file and API KEY 
+```bash
+echo 'VT_API_KEY="your_key"' > .env
+```
+
+----------
 
 
 
@@ -83,6 +126,6 @@ Send Suspicious Hash to Virus Total Api and get report back :
 #### More about Hashes ? 
 
 -  You should learn about Hash Collisions and understand why MD5 and SHA-1 are not recommended.
--  [HashList]('https://hashcat.net/wiki/doku.php?id=example_hashes')
+-  [HashList](https://hashcat.net/wiki/doku.php?id=example_hashes)
 -  [JohnTheRipper](https://www.kali.org/tools/john/)
 -  [HashCatTool](https://www.kali.org/tools/hashcat/)
