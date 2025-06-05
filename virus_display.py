@@ -117,13 +117,14 @@ class ReportDisplay:
 
 
     def show_full_report(self):
+        data = self.response['data']
         self.display_basic_info()
         self.display_analysis_stats()
         self.display_sources()
         self.display_threat_info()
         self.display_technical_info()
         self.display_miscellaneous()
-        self.c.save_html("report.html")
+        self.c.save_html(f"report_{data['id']}.html")
 
 
 

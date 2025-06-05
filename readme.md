@@ -22,6 +22,9 @@ In the context of files, hashing helps confirm that a file remains unchanged or 
 - **Duplicate detection:** Identify duplicate files or data by comparing their hashes.
 - **Security checks:** Scan hashes against databases (like VirusTotal) to detect malicious or known compromised files.
 
+
+--------------------
+
 ## This project :
 
 Is a simple CLI tool that allows to : 
@@ -33,66 +36,53 @@ Is a simple CLI tool that allows to :
 - Scan a Hash with Virus-Total
 
 
-it handles 16 algorithm that are commonly used for this task
+*- it handle 16 algorithm that are commonly used for this task*
+
+## Report and History : 
+
+- In the current directory where you execute this tool, you will have a `.file_path_history` that help 
+auto-compplete of dir path to be more precise
+
+- After getting the report in console, a `report_{hash_numer}.html` is also available in the current dir  
+
 
 <p align="center">
     <img src="img/supported-hashes.png" width="900">
 </p>
 
 
-You want more ? -> [HashCat](https://hashcat.net/wiki/doku.php?id=example_hashes)
-
-
-
-### Compare or Generate hash from or to file : 
-
-- If you use compare or generate function for file, a `.file_path_history` will be created in your current directory to help you search next time.
-
-
-
-## Install project:
-
-### Clone project:
-
-    git clone https://github.com/LGD-P/Hash-Checker.git
-    cd Hash-Checker
-
-### Install Poetry dependency management:
-
-    pip install poetry
-
-
-### Active virtual environnement in your project:
-
-    poetry shell
-
-### Install dependencies:
-
-    poetry install
-
-### Run project in you IDE:
-
-    python main.py
-
-
-### Scan a Hash with VirusTotal
-
-- If you want to use this feature, you will need to create a .env file and add your VT_API_KEY.
-- Create an account to get a free API key from [VIRUS TOTAL](https://www.virustotal.com/gui/home/upload).
-- This project only sends file hashes to the API. I recommend not uploading personal files directly to the app, except when using the private scanning mode, which is a premium feature.
-
-
-
 
 ## Illustration : 
-
 <p align="center">
-    Generate a hash from a file and submit it to VIRUS TOTAL API
+Generate hashes from a file :
 </p>
+ 
 
 <p align="center">
     <img src="img/hash-from-file.gif" width="900">
 </p>
 
+<p align="center">
+Generate hashes from a String :
+</p>
 
- 
+<p align="center">
+    <img src="img/hash-from-string.gif" width="900">
+</p>
+
+<p align="center">
+Send Suspicious Hash to Virus Total Api and get report back :
+</p>
+
+<p align="center">
+    <img src="img/hash-to-virus-total.gif" width="900">
+</p>
+
+---------
+
+#### More about Hashes ? 
+
+-  You should learn about Hash Collisions and understand why MD5 and SHA-1 are not recommended.
+-  [HashList]('https://hashcat.net/wiki/doku.php?id=example_hashes')
+-  [JohnTheRipper](https://www.kali.org/tools/john/)
+-  [HashCatTool](https://www.kali.org/tools/hashcat/)
