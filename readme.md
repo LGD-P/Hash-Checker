@@ -33,7 +33,7 @@ Is a simple CLI tool that allows to :
 - Scan a Hash with Virus-Total
 
 
-it handle 16 algorithm that are commonly used for this task
+it handles 16 algorithm that are commonly used for this task
 
 <p align="center">
     <img src="img/supported-hashes.png" width="900">
@@ -43,6 +43,47 @@ it handle 16 algorithm that are commonly used for this task
 You want more ? -> [HashCat]('https://hashcat.net/wiki/doku.php?id=example_hashes')
 </p>
 
+
+### Compare or Generate hash from or to file : 
+
+- If you use compare or generate function for file, a `.file_path_history` will be created in your current directory to help you search next time.
+
+
+
+## Install project:
+
+### Clone project:
+
+    git clone https://github.com/LGD-P/Hash-Checker.git
+    cd Hash-Checker
+
+### Install Poetry dependency management:
+
+    pip install poetry
+
+
+### Active virtual environnement in your project:
+
+    poetry shell
+
+### Install dependencies:
+
+    poetry install
+
+### Run project in you IDE:
+
+    python main.py
+
+
+### Scan a Hash with VirusTotal
+
+- If you want to use this feature, you will need to create a .env file and add your VT_API_KEY.
+- Create an account to get a free API key from VIRUS TOTAL.
+- This project only sends file hashes to the API. I recommend not uploading personal files directly to the app, except when using the private scanning mode, which is a premium feature.
+
+
+
+
 ## Illustration : 
 
 <p align="center">
@@ -50,3 +91,4 @@ You want more ? -> [HashCat]('https://hashcat.net/wiki/doku.php?id=example_hashe
 </p>
 
 
+ 

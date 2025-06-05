@@ -14,7 +14,7 @@ from virus_total_api import VirusTotal
 from virus_display import ReportDisplay
 c = Console()
 
-class CLI:
+class Cli:
 
     @staticmethod
     def main_menu():
@@ -67,9 +67,9 @@ class CLI:
     def run():
         try:
             while True:
-                choice = CLI.main_menu()
+                choice = Cli.main_menu()
                 if choice == "Generate hash from a file":
-                    file_path = Path(CLI.get_file_path())
+                    file_path = Path(Cli.get_file_path())
                     hashes = HashChecker.generate_hashes_from_file(file_path)
                     if not hashes:
                         return ErrorMessage.display_file_error_file_in_cli(file_path)
@@ -77,19 +77,19 @@ class CLI:
                         AnswerMessages.display_hash_from_file_or_string(hashes)
 
                 elif choice == "Generate hash from a string":
-                    string = CLI.get_string()
+                    string = Cli.get_string()
                     hashes = HashChecker.generate_hashes_form_string(string)
                     AnswerMessages.display_hash_from_file_or_string(hashes)
 
                 elif choice == "Compare hash to a string":
-                    hash_to_compare = CLI.get_hash()
-                    string = CLI.get_string()
+                    hash_to_compare = Cli.get_hash()
+                    string = Cli.get_string()
                     result = HashChecker.compare_hash_to_string(hash_to_compare, string)
                     AnswerMessages.display_compare_hash_to_string(result)
 
                 elif choice == "Compare hash to a file":
-                    hash_to_compare = CLI.get_hash()
-                    file_path = Path(CLI.get_file_path())
+                    hash_to_compare = Cli.get_hash()
+                    file_path = Path(Cli.get_file_path())
                     result = HashChecker.compare_hash_to_file(hash_to_compare, file_path)
 
                     if not result:
@@ -98,7 +98,7 @@ class CLI:
                         AnswerMessages.display_compare_hash_to_file(result)
 
                 elif choice == "Scan a Hash with Virus-Total":
-                    hash_to_scan = CLI.get_hash_to_scan()
+                    hash_to_scan = Cli.get_hash_to_scan()
                     virus_total = VirusTotal(hash_to_scan)
                     scan = virus_total.ask_virus_total()
                     if 'error' in scan:
@@ -114,4 +114,4 @@ class CLI:
             c.print("\n[bold red]Exiting... Goodbye![/bold red]")
 
 if __name__ == "__main__":
-    CLI.run()
+    Cli.run()
