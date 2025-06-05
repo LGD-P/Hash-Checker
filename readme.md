@@ -39,9 +39,9 @@ it handles 16 algorithm that are commonly used for this task
     <img src="img/supported-hashes.png" width="900">
 </p>
 
-<p align="center">
-You want more ? -> [HashCat]('https://hashcat.net/wiki/doku.php?id=example_hashes')
-</p>
+
+You want more ? -> [HashCat](https://hashcat.net/wiki/doku.php?id=example_hashes)
+
 
 
 ### Compare or Generate hash from or to file : 
@@ -78,13 +78,17 @@ You want more ? -> [HashCat]('https://hashcat.net/wiki/doku.php?id=example_hashe
 ### Scan a Hash with VirusTotal
 
 - If you want to use this feature, you will need to create a .env file and add your VT_API_KEY.
-- Create an account to get a free API key from VIRUS TOTAL.
+- Create an account to get a free API key from [VIRUS TOTAL](https://www.virustotal.com/gui/home/upload).
 - This project only sends file hashes to the API. I recommend not uploading personal files directly to the app, except when using the private scanning mode, which is a premium feature.
 
 
 
 
 ## Illustration : 
+
+<p align="center">
+    Generate a hash from a file and submit it to VIRUS TOTAL API
+</p>
 
 <p align="center">
     <img src="img/hash-from-file.gif" width="900">
