@@ -15,13 +15,13 @@ In the context of files, hashing helps confirm that a file remains unchanged or 
 
 
 ## Some uses of hashing :
-
-- **File integrity verification:** Check if files have been altered or corrupted by comparing their hashes before and after transfer or storage.
-- **Password storage:** Store hashed versions of passwords to enhance security.
-- **Digital signatures:** Verify the authenticity and integrity of digital documents.
-- **Duplicate detection:** Identify duplicate files or data by comparing their hashes.
-- **Security checks:** Scan hashes against databases (like VirusTotal) to detect malicious or known compromised files.
-
+| **Use Case**               | **Description**                                                                 |
+|----------------------------|---------------------------------------------------------------------------------|
+| **File integrity verification** | Check if files have been altered or corrupted by comparing their hashes before and after transfer or storage. |
+| **Password storage**       | Store hashed versions of passwords to enhance security.                        |
+| **Digital signatures**     | Verify the authenticity and integrity of digital documents.                    |
+| **Duplicate detection**    | Identify duplicate files or data by comparing their hashes.                   |
+| **Security checks**        | Scan hashes against databases (like VirusTotal) to detect malicious or known compromised files. |
 
 --------------------
 
