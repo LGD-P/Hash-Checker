@@ -1,9 +1,14 @@
 .env
 .idea
+/utils
 __pycache__
+/env
 /img/hash-from-file.mp4
 /img/hash-from-string.mp4
 /img/hash-from-to-virus-total.mp4
+/img/main.py
+/img/this-is-a-test.py
+img/hash-from-to_virus_total.mp4
 utils/invalid_hash.json
 utils/no_error_found.json
 utils/result.json
