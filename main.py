@@ -1,9 +1,9 @@
-from cli import CLI
+from logic.cli import Cli
 
 
 
 def main():
-    cli = CLI()
+    cli = Cli()
     return cli.run()
 
 

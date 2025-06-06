@@ -1,8 +1,9 @@
 import requests
 from dotenv import load_dotenv
 import os
-import json
-from const import VIRUS_TOTAL_URL
+# import json
+
+from .const import VIRUS_TOTAL_URL
 from rich.console import Console
 
 

@@ -1,8 +1,5 @@
 import questionary
 from pathlib import Path
-from hash_checker import HashChecker
-from display_messages import AnswerMessages, ErrorMessage
-from const import CYBER_STYLE_TOOLKIT, CYBER_STYLE_QUESTIONARY
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import PathCompleter
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
@@ -10,8 +7,14 @@ from prompt_toolkit.history import FileHistory
 from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
-from virus_total_api import VirusTotal
-from virus_display import ReportDisplay
+
+from .virus_total_api import VirusTotal
+from .const import CYBER_STYLE_TOOLKIT, CYBER_STYLE_QUESTIONARY
+from .duplicate_file import DuplicationTracker
+from .hash_checker import HashChecker
+from view.display_virus_total_report import ReportDisplay
+from view.display_messages import AnswerMessages, ErrorMessage
+
 c = Console()
 
 class Cli:
@@ -27,6 +30,8 @@ class Cli:
                 "Compare hash to a string",
                 "Compare hash to a file",
                 "Scan a Hash with Virus-Total",
+                "Select file to check duplication",
+                "Global check directories for Duplicate Files",
                 "Exit"
             ],
             style=CYBER_STYLE_QUESTIONARY
@@ -42,10 +47,27 @@ class Cli:
             completer=completer,
             style=CYBER_STYLE_TOOLKIT,
             auto_suggest=AutoSuggestFromHistory(),
-            history=FileHistory('.file_path_history')
+            history=FileHistory('../.file_path_history')
         )
 
         return file_path
+
+    @staticmethod
+    def get_dir_path():
+        c.print(Panel.fit(Text.from_markup("[bold cyan]Please enter the dir path:[/bold cyan]"), border_style="cyan"))
+
+        completer = PathCompleter()
+        file_path = prompt(
+            "",
+            completer=completer,
+            style=CYBER_STYLE_TOOLKIT,
+            auto_suggest=AutoSuggestFromHistory(),
+            history=FileHistory('../.file_path_history')
+        )
+
+        return file_path
+
+
 
     @staticmethod
     def get_string():
@@ -107,10 +129,29 @@ class Cli:
                         report = ReportDisplay(scan)
                         report.show_full_report()
 
+                elif choice == "Select file to check duplication":
+                    file_path = Path(Cli.get_file_path())
+                    if not file_path.is_file():
+                        return ErrorMessage.display_path_is_not_file(file_path)
+                    hashes = DuplicationTracker.single_hash_calculator(file_path)
+                    if not hashes:
+                        return ErrorMessage.display_file_error_file_in_cli(file_path)
+                    else:
+                        dir_path = Path(Cli.get_dir_path())
+                        DuplicationTracker.parse_directories(dir_path, hashes)
+
+                elif choice == "Global check directories for Duplicate Files":
+                    file_path = Path(Cli.get_file_path())
+                    if file_path.is_file():
+                        ErrorMessage.display_path_is_file(file_path)
+                    else:
+                        DuplicationTracker.parse_directories(file_path)
+
                 elif choice == "Exit":
                     break
+
         except KeyboardInterrupt:
-            # Handle Ctrl+C gracefully
+            # Handle Ctrl+C
             c.print("\n[bold red]Exiting... Goodbye![/bold red]")
 
 if __name__ == "__main__":

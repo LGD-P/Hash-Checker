@@ -2,10 +2,12 @@
     <img src="img/logo-hash-checker.png" width="400">
 </p>
 
-# Hash-Checker
 
-This is a command-line interface (CLI) tool designed to check the integrity of files and generate hashes. 
-It also allows you to scan hashes using the VirusTotal API.
+
+
+- This is a command-line interface (CLI) tool designed to check the integrity of files and generate hashes. 
+- It also allows you to scan hashes using the VirusTotal API and get report back.
+- Finaly you can check about duplicate file from a hash file or just investigating a specific directory.
 
 ## What is a hash, and what is it for? :
 
@@ -15,6 +17,7 @@ In the context of files, hashing helps confirm that a file remains unchanged or 
 
 
 ## Some uses of hashing :
+
 | **Use Case**               | **Description**                                                                 |
 |----------------------------|---------------------------------------------------------------------------------|
 | **File integrity verification** | Check if files have been altered or corrupted by comparing their hashes before and after transfer or storage. |
@@ -34,6 +37,8 @@ Is a simple CLI tool that allows to :
 - Compare hash to a string
 - Compare hash to a file
 - Scan a Hash with Virus-Total
+- Select file to check duplication
+- Global check directories for Duplicate Files
 
 
 *- it handle 16 algorithm that are commonly used for this task*
@@ -45,6 +50,8 @@ Is a simple CLI tool that allows to :
 
 ## Report and History : 
 
+### Virus Total : 
+
 - You will need to create an account on [VIRUS_TOTAL](https://www.virustotal.com/gui/sign-in) to get a free API Key, 
 and be able to use `Scan a Hash with Virus-Total` feature 
 
@@ -52,6 +59,11 @@ and be able to use `Scan a Hash with Virus-Total` feature
 auto-compplete of dir path to be more accurate
 
 - After getting the report in console, a `report_{hash_numer}.html` is also available in the current dir  
+
+### Duplication Check : 
+
+- a report formated like `scan_report_06-06-2025--14-40-33.txt` will appear in the current directory where you execute this tool
+
 
 ----------
 
@@ -119,6 +131,14 @@ Send Suspicious Hash to Virus Total Api and get report back :
 
 <p align="center">
     <img src="img/hash-to-virus-total.gif" width="900">
+</p>
+
+<p align="center">
+Check for duplicate Files : 
+</p>
+
+<p align="center">
+    <img src="img/check-duplications-file.png" width="900">
 </p>
 
 ---------

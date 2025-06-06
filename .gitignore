@@ -4,8 +4,8 @@ __pycache__
 /img/hash-from-file.mp4
 /img/hash-from-string.mp4
 /img/hash-from-to-virus-total.mp4
-invalid_hash.json
-no_error_found.json
-result.json
+utils/invalid_hash.json
+utils/no_error_found.json
+utils/result.json
 to_do.md
 .file_path_history

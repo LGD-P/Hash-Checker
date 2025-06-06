@@ -1,7 +1,8 @@
 import os
 import hashlib
 from pathlib import Path
-from const import HASHES_AVAILABLE
+
+from .const import HASHES_AVAILABLE
 
 
 

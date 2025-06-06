@@ -1,11 +1,16 @@
-from typing import Dict, List, Any
-from rich.console import Console
-from rich.panel import Panel
-from rich.text import Text
-from rich.table import Table
-from pathlib import Path
 import os
-from  const import ALGORITHM_STRENGTH
+from typing import Dict, List, Any
+from rich.text import Text
+from rich.align import Align
+from rich.console import Console
+from rich.table import Table
+from rich.panel import Panel
+from rich import box
+from pathlib import Path
+from rich.progress import Progress, BarColumn, TextColumn, TimeRemainingColumn, MofNCompleteColumn
+
+from logic.const import ALGORITHM_STRENGTH
+
 c = Console()
 
 class ErrorMessage:
@@ -19,6 +24,17 @@ class ErrorMessage:
         if not os.access(path, os.R_OK):
             return  c.print(Panel.fit(Text.from_markup(f"[bold blue1]Permission Error: [/bold blue1] [bold red]No read permission for the file '[bold yellow]{path}[/bold yellow]'.[/bold red]")))
         return False
+
+    @staticmethod
+    def display_path_is_not_file(path: Path):
+        if not path.is_file():
+            return c.print(Panel.fit(Text.from_markup(
+                f"[bold blue1]File Error: [/bold blue1] [bold red]The path '[bold yellow]{path}[/bold yellow]' is not a file.[/bold red]")))
+
+    @staticmethod
+    def display_path_is_file(path: Path):
+            return c.print(Panel.fit(Text.from_markup(
+                f"[bold blue1]File Error: [/bold blue1] [bold red]{path}[/bold red][bold yellow]' is a file.[/bold yellow]")))
 
     @staticmethod
     def display_error_virus_total(response: Dict[str, Any]):
@@ -57,3 +73,33 @@ class AnswerMessages:
             c.print(Panel.fit(Text.from_markup(f"[bold green]{result[0]}[/bold green] is a [bold blue]{result[1]}[/bold blue] algorithm matching with [bold yellow]{result[2]}[/bold yellow]")))
         else:
             c.print(Panel.fit(Text.from_markup("[bold red]Your file does not match any of our algorithms.[/bold red]")))
+
+    @staticmethod
+    def display_duplicate_files(duplicates: Dict[Any, list]):
+        for hash, paths in duplicates.items():
+            table = Table(show_header=False, box=box.SQUARE, border_style='red1')
+            table.add_column("Path")
+            table.add_column("Number")
+
+            for idx, path in enumerate(paths, start=1):
+                table.add_row(path, str(idx))
+
+            centered_table = Align.center(table)
+
+            c.print(
+                Panel(centered_table, title=f"[bold cyan]Hash: {hash}[/bold cyan]", border_style="bright_blue",
+                      box=box.ROUNDED)
+            )
+
+
+    @staticmethod
+    def progress_bar_scanning_duplicate_files() -> Progress:
+        progress_bar = Progress(
+            TextColumn("[progress.description]{task.description}"),
+            BarColumn(),
+            MofNCompleteColumn(),
+            TextColumn("[progress.percentage]{task.percentage:>3.0f}%"),
+            TimeRemainingColumn(),
+            transient=True,
+        )
+        return progress_bar
