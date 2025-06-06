@@ -1,9 +1,9 @@
-from logic.cli import Cli
+from logic.menu_handler import MenuHandler
 
 
 
 def main():
-    cli = Cli()
+    cli = MenuHandler()
     return cli.run()
 
 
