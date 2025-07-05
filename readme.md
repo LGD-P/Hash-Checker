@@ -56,7 +56,7 @@ Is a simple CLI tool that allows to :
 and be able to use `Scan a Hash with Virus-Total` feature 
 
 - In the current directory where you execute this tool, you will have a `.file_path_history` that help 
-auto-compplete of dir path to be more accurate
+auto-complete of dir path to be more accurate
 
 - After getting the report in console, a `report_{hash_numer}.html` is also available in the current dir  
 
